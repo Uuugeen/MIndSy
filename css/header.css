@@ -1,0 +1,168 @@
+
+.header {
+    width: 100%;
+    padding: 3rem 0;
+
+}
+
+.header-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    font-size: 20px;
+    
+    
+}
+
+.menu li a {
+    color: var(--accent);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+}
+
+
+.menu li a:hover {
+    color: var(--accentHover);
+    text-shadow: 0px 0px 20px var(--accentHover);
+    padding-bottom: 14px;
+    
+   
+}
+
+.menu li:hover {
+    cursor: pointer;
+    transform: translate(0, -4px);
+}
+
+
+.logo a {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+}
+
+.logo:hover a{
+    color: var(--accentHover);
+    text-shadow: 0px 0px 20px var(--accentHover);
+    
+}
+
+.logo:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.header-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+}
+
+.avtentification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.avtentification button {
+    background-color: var(--accent);
+    color: var(--textButton);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+}
+
+.avtentification button:hover {
+    background-color: var(--accentHover);
+    box-shadow: 0px 0px 10px var(--accentHover);
+    transform: translate(0, -4px);
+}
+
+.theme-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-toggle:hover .theme-title {
+    color: var(--accentHover);
+    text-shadow: 0px 0px 20px var(--accentHover);
+    transform: scale(1.1) translate(0, -4px);
+}
+
+.theme-title {
+    color: var(--accent);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+    gap: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.theme-toggle:hover .slider {
+    box-shadow: 0px 0px 10px var(--accentHover);
+    transform: scale(1.1);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--accent);
+  border-radius: 34px;
+  padding: 2px;
+}
+
+/* Кружок всередині перемикача */
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease-in-out,
+              box-shadow 0.3s ease-in-out;
+}
+
+
+
+input:checked + .slider::before {
+  transform: translateX(22px);
+  
+}
+
+/* Додатково: фокус */
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--accent);
+}
+
