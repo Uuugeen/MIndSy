@@ -1,4 +1,11 @@
+
+import { innit } from './core.js';
+
+
 document.addEventListener('DOMContentLoaded', function() {
+
+    innit(); 
+
     const TOGGLE_THEME = document.getElementById('theme-switch');
     const THEME_LABEL = document.getElementById('theme-label');
 
@@ -18,3 +25,13 @@ document.addEventListener('DOMContentLoaded', function() {
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 });
+
+
+export function showMessage(message) {
+    const modalMessage = document.getElementById('modal-message');
+    modalMessage.innerText = message;
+    modalMessage.style.opacity = '1';
+    setTimeout(() => {
+        modalMessage.style.opacity = '0';
+    }, 2000);
+}

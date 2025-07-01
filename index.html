@@ -20,7 +20,7 @@
                     <nav>
                         <ul class="menu">
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="html/projects.html">Projects</a></li>
+                            <li><a href="html/editor.html">Projects</a></li>
                             <li><a href="html/about.html">About</a></li>
                             <li><a href="html/contact.html">Contact</a></li>
                         </ul>
@@ -33,13 +33,22 @@
                                 <span class="slider"></span>
                             </label>
                         </div>
-                        <div class="avtentification">
-                            <button class="login-button">Login</button>
-                            <button class="register-button">Register</button>
+                        <div class="avtentification" id="avtentification">
+                            <button class="login-button" id="login-button">Login</button>
+                            <button class="register-button" id="register-button">Register</button>
                         </div>
                     </div>
                 </div>
             </header>
+        </div>
+
+        <div class="modal" id="modal">
+            <div class="modal-conteiner">
+                <span id="close-modal">&#10006;</span>
+                <div class="modal-content" id="modal-content"> 
+                    
+                </div>
+            </div>
         </div>
 
         <div class="container"> 
@@ -118,8 +127,9 @@
         </div>
 
 
+        <div class="modal-message" id="modal-message"></div>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js" type="module"></script>
 
     <noscript>Немає Скрипта</noscript>
 </body>

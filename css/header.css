@@ -22,16 +22,16 @@
 }
 
 .menu li a {
-    color: var(--accent);
+    color: var(--blueSecondary);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
     padding-bottom: 10px;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 2px solid var(--blueThird);
 }
 
 
 .menu li a:hover {
-    color: var(--accentHover);
-    text-shadow: 0px 0px 20px var(--accentHover);
+    color: var(--blueThird);
+    text-shadow: 0px 0px 20px var(--blueThird);
     padding-bottom: 14px;
     
    
@@ -48,11 +48,19 @@
     font-weight: 600;
     color: var(--accent);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+    background: linear-gradient(90deg, #f438d8, #7411d1, #2e85ef);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+
+    /* для підтримки деяких браузерів */
+    background-clip: text;
+     color: transparent;
 }
 
 .logo:hover a{
-    color: var(--accentHover);
-    text-shadow: 0px 0px 20px var(--accentHover);
+    filter: drop-shadow(3px 3px 20px var(--violet));
+    
     
 }
 
@@ -66,6 +74,7 @@
     justify-content: center;
     align-items: center;
     gap: 4rem;
+    
 }
 
 .avtentification {
@@ -73,22 +82,26 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    
 }
 
 
+
 .avtentification button {
-    background-color: var(--accent);
+    background: linear-gradient(90deg, #f438d8, #7411d1, #2e85ef);
     color: var(--textButton);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
+    cursor: pointer;
 }
 
 .avtentification button:hover {
-    background-color: var(--accentHover);
-    box-shadow: 0px 0px 10px var(--accentHover);
+    box-shadow: 0px 0px 10px var(--blueThird);
     transform: translate(0, -4px);
 }
+
+
 
 .theme-toggle {
     display: flex;
@@ -98,20 +111,20 @@
 }
 
 .theme-toggle:hover .theme-title {
-    color: var(--accentHover);
-    text-shadow: 0px 0px 20px var(--accentHover);
+    color: var(--violetThird);
+    text-shadow: 0px 0px 20px var(--violetThird);
     transform: scale(1.1) translate(0, -4px);
 }
 
 .theme-title {
-    color: var(--accent);
+    color: var(--violetSecondary);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.384);
     gap: 0.5rem;
     font-size: 0.8rem;
 }
 
 .theme-toggle:hover .slider {
-    box-shadow: 0px 0px 10px var(--accentHover);
+    box-shadow: 0px 0px 10px var(--violetThird);
     transform: scale(1.1);
 }
 
@@ -135,7 +148,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--accent);
+  background-color: var(--violet);
   border-radius: 34px;
   padding: 2px;
 }
@@ -156,6 +169,8 @@
 
 
 
+
+
 input:checked + .slider::before {
   transform: translateX(22px);
   
@@ -163,6 +178,6 @@ input:checked + .slider::before {
 
 /* Додатково: фокус */
 input:focus + .slider {
-  box-shadow: 0 0 1px var(--accent);
+  box-shadow: 0 0 1px var(--violetThird);
 }
 
