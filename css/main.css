@@ -12,10 +12,10 @@
     justify-content: center;
     text-align: center;
     padding: 4rem 2rem;
-    color: var(--textButton);
+    color: var(--surface);
     font-weight: 600;
     font-size: 18px;
-    background: linear-gradient(90deg, #f438d8, #7411d1, #2e85ef);
+    background: var(--background);
     border-radius: 2rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     margin-bottom: 3rem;
@@ -52,27 +52,31 @@
 
 .mindsy-information {
     padding: 4rem 2rem;
-    background: linear-gradient(45deg, var(--blue) 0%, var(--blueSecondary) 60%);
+    background: var(--backgroundBlue);
     border-radius: 1.5rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     margin-bottom: 3rem;
+   
 }
 
 .mindsy-information h2 {
     text-align: center;
+    color: var(--surface);
 }
 
 .mindsy-information p {
     text-align: center;
     line-height: 1.5;
+    color: var(--surface);
 }
 
 .everything {
     padding: 4rem 2rem;
-    background: linear-gradient(45deg, var(--blue) 0%,var(--blueSecondary) 60%,var(--blueThird) 80%);
+    background: var(--backgroundBlue);
     border-radius: 1.5rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     margin-bottom: 3rem;
+    
 }
 
 .everything-text {
@@ -83,14 +87,14 @@
 
 .get_started {
     padding: 4rem 2rem;
-    background: linear-gradient(45deg, var(--violet) 0%, var(--violetSecondary) 30%, var(--violetThird) 60%);
+    background: var(--backgroundViolet);
     border-radius: 1.5rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     margin-bottom: 3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--lightColor);
+    color: var(--surface);
     
 }
 
@@ -106,10 +110,10 @@
     padding: 1rem 2rem;
     background-color: transparent;
     border-radius: 1.5rem;
-    color: var(--lightColor);
+    color: var(--surface);
     font-weight: 600;
     margin-top: 3rem;
-    border: 3px solid var(--violetThird);
+    border: 3px solid var(--violetHeader);
     cursor: pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
 }
@@ -117,8 +121,7 @@
 .get_started-button:hover {
    
     transform: translateY(-4px);
-    color: var(--lightColor);
-    box-shadow: 2px 2px 10px var(--violetThird);
+    box-shadow: 2px 2px 10px var(--violetHeader);
 }
 
 .get_started-menu {
@@ -152,25 +155,27 @@
 }
 
 .get_started-menu li {
-    background: #a423917c;
+    background: var(--startedFast);
     border-radius: 1.5rem;
     padding: 1rem 2rem;
     color: var(--lightColor);
     font-weight: 600;
     cursor: pointer;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
-    border: 3px solid var(--accentHover);
+    border: 3px solid var(--startedFast2);
 }
 
 .get_started-menu li:hover {
-    background: var(--accent);
+    background: transparent;
     transform: translateY(-4px);
-    box-shadow: 2px 2px 10px var(--accentHover);
+    box-shadow: 2px 2px 10px var(--violetHeader);
+    border: 3px solid var(--violetHeader);
+    color: var(--surface);
 }
 
 .built {
     padding: 4rem 2rem;
-    background: linear-gradient(45deg, var(--violet) 0%, var(--violetSecondary) 30%, var(--violetThird) 60%);
+    background: var(--backgroundViolet);
     border-radius: 1.5rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     margin-bottom: 3rem;
@@ -189,7 +194,7 @@
 
 .built-list li::before {
     content: "✓";
-    color: var(--lightColor);
+    color: var(--surface);
     margin-right: 0.5rem;
     font-size: 1.5rem;
 }

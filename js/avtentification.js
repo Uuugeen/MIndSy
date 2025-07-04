@@ -126,7 +126,7 @@ function handleAuthSubmit(formId, isLogin = false) {
         const email = form.querySelector('#email').value.trim();
         const password = form.querySelector('#password').value.trim();
 
-        const avtentification = document.getElementById("avtentification")
+        
 
         if (!validateFormData(username, email, password)) return;
 
@@ -154,7 +154,7 @@ function handleAuthSubmit(formId, isLogin = false) {
             localStorage.setItem('users', JSON.stringify(users));
             showMessage("Registration successful");
             console.log({username, email, password})
-            localStorage.setItem('currentUser', JSON.stringify(foundUser));  
+            localStorage.setItem('currentUser', JSON.stringify({username, email, password})); 
             checkAuth(); // одразу рендерить кнопку
 
         }
@@ -184,7 +184,7 @@ function profileUser() {
     const profileButton = document.getElementById("avtentification-button")
     const modalContent = document.getElementById('modal-content');
     const modal = document.getElementById('modal');
-    const closeModal = document.getElementById('close-modal');
+    const modalContainer = document.getElementById('modal-conteiner')
     const body = document.querySelector('body'); 
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -193,12 +193,144 @@ function profileUser() {
             modal.style.opacity = 1;
             modal.style.visibility = 'visible';
             body.style.overflow = 'hidden';
+            modalContainer.style.maxWidth = '30rem' ;
             modalContent.innerHTML = '';
             modalContent.innerHTML = `
-                <h3>User Profile: ${currentUser.username}</h3>
-                <div>
+                <h3 style="margin-bottom:5rem;">User Profile: ${currentUser.username}</h3>
+                <div class="profile-content" style="display:flex; flex-direction:column; gap:1.5rem;" >
+                    <p style="font-size:20px">Email: ${currentUser.email}</p>
+                    <button class="change-info" id="change-info">Change Infotmation</button>
+                    <button class="my-projects" id="my-projects"><a href="/html/editor.html">My projects</a></button>
+                    <button class="log-out" id="log-out">Logout</button>
                 </div>
+                
             `;
+
+            logOut();
+            changeInfo();
         });
+
+        
+
+
     }
+}
+
+
+function logOut() {
+    const logOutButton = document.getElementById("log-out");
+
+    const modal = document.getElementById('modal');
+    const modalContainer = document.getElementById('modal-conteiner')
+    const body = document.querySelector('body'); 
+
+    logOutButton.addEventListener('click', function(e) {
+        
+
+        if (logOutButton) {
+            // Видаляємо користувача
+            localStorage.removeItem('currentUser');
+                
+            showMessage("You have been logged out.");
+
+            const avtentification = document.getElementById('avtentification');
+            avtentification.innerHTML = `
+            <button class="login-button" id="login-button">Login</button>
+            <button class="register-button" id="register-button">Register</button>
+            `;
+
+            modal.style.opacity = 0;
+            modal.style.visibility = 'hidden';
+            body.style.overflow = 'auto';
+            modalContainer.style.maxWidth = '23rem' ;
+                
+            avtentificationButtons();
+
+        }
+
+
+    });
+}
+
+
+function changeInfo() {
+    const changeInfoButton = document.getElementById("change-info");
+    const modalContent = document.getElementById("modal-content");
+    const modal = document.getElementById('modal');
+    const modalContainer = document.getElementById('modal-conteiner');
+    const body = document.querySelector('body'); 
+
+    if (!changeInfoButton) return;
+
+    changeInfoButton.addEventListener("click", () => {
+        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        if (!currentUser) return;
+
+        modalContainer.style.maxWidth = '23rem';
+        modal.style.opacity = '1';
+        modal.style.visibility = 'visible';
+        body.style.overflow = 'hidden';
+
+        modalContent.innerHTML = `
+            <h3 style="margin-bottom:3rem;">Please input your password</h3>
+            <form id="verifyPasswordForm">
+                <input type="password" placeholder="Your current password" id="current-password" name="password" required>
+                <button type="submit" id="verifyButton">Verify</button>
+            </form>
+        `;
+
+        const verifyForm = document.getElementById("verifyPasswordForm");
+        verifyForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            const enteredPassword = document.getElementById("current-password").value;
+            if (enteredPassword !== currentUser.password) {
+                showMessage("Incorrect password");
+                return;
+            }
+
+            // Відображення форми зміни даних
+            modalContent.innerHTML = `
+                <h3 style="margin-bottom:3rem;">Change Information</h3>
+                <form id="changeInfoForm">
+                    <label>Your new email:</label>
+                    <input type="email" id="new-email" name="new email" value="${currentUser.email}" required>
+                    <label>Your new password:</label>
+                    <input type="text" id="new-password" name="new password" value="${currentUser.password}" required>
+                    <br>
+                    <button type="submit" id="changeSubmitButton">Submit</button>
+                </form>
+            `;
+
+            const changeForm = document.getElementById("changeInfoForm");
+            changeForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+
+                const newEmail = document.getElementById("new-email").value.trim();
+                const newPassword = document.getElementById("new-password").value.trim();
+
+                // Оновлюємо поточного користувача
+                const updatedUser = {
+                    ...currentUser,
+                    email: newEmail,
+                    password: newPassword
+                };
+
+                // Оновлюємо масив користувачів у localStorage
+                const users = JSON.parse(localStorage.getItem('users')) || [];
+                const updatedUsers = users.map(user =>
+                    user.email === currentUser.email ? updatedUser : user
+                );
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+                localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+
+                showMessage("Information updated");
+                setTimeout(() => {
+                    modal.style.opacity = '0';
+                    modal.style.visibility = 'hidden';
+                    body.style.overflow = 'auto';
+                }, 2000);
+            });
+        });
+    });
 }

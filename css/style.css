@@ -15,6 +15,8 @@ table {border-collapse: collapse;border-spacing: 0;}
     --accent: #a42391;
     --accentHover: #c405a7;
 
+    --grayColor: #777777;
+
     --surface:#fedddd;
     --surface-contrast:var(--darkColor);
 
@@ -27,6 +29,18 @@ table {border-collapse: collapse;border-spacing: 0;}
     --violetThird: #8508fa;
 
     --modalColor:var(--textButton);
+
+
+    --pinkHeader:#f438d8;
+    --blueHeader: #2e85ef;
+    --violetHeader: #7411d1;
+
+    --startedFast: #a423917c;
+    --startedFast2:var(--accentHover);
+
+    --background: linear-gradient(90deg, var(--pinkHeader), var(--violetHeader), var(--blueHeader));
+    --backgroundBlue: linear-gradient(45deg, var(--blue) 0%, var(--blueSecondary) 60%);
+    --backgroundViolet: linear-gradient(45deg, var(--violet) 0%, var(--violetSecondary) 30%, var(--violetThird) 60%);
 
 
 
@@ -49,12 +63,27 @@ body {
     background: linear-gradient(180deg, #f7eaea 0%, var(--surface) 90%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    
 }
 /*===========Dark theme===========*/
 body.dark-theme {
     --surface: var(--darkColor);
     --surface-contrast: var(--lightColor);
     --modalColor:var(--darkColor);
+
+    --pinkHeader:#ffe4e4;
+    --blueHeader: #ffe4e4;
+    --violetHeader: #ffe4e4;
+
+    --startedFast: #00000037;
+    --startedFast2:var(--blackColor);
+    
+    --background: linear-gradient(90deg, var(--lightColor), var(--grayColor));
+     --backgroundBlue:linear-gradient(90deg, var(--lightColor), var(--grayColor));
+     --backgroundViolet: linear-gradient(90deg, var(--lightColor), var(--grayColor));
+
+
     background: linear-gradient(180deg, #333333 0%, var(--surface) 60%);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -76,8 +105,14 @@ body.dark-theme {
 }
 
 
+button a {
+    color: inherit;
+    text-decoration: inherit;
+    font-size: inherit;
+}
+
 .text{
-    color: var(--lightColor);
+    color: var(--surface);
     font-size: 18px;
     margin: 0 0 1.5rem 1.5rem;
 }
@@ -89,14 +124,14 @@ body.dark-theme {
 .text-header {
     font-size: 24px;
     font-weight: 600;
-    color: var(--lightColor);
+    color: var(--surface);
     margin-bottom: 2rem;
 }
 
 .min-header {
     font-size: 20px;
     font-weight: 600;
-    color: var(--lightColor);
+    color: var(--surface);
     margin-bottom: 1rem;
 }
 
@@ -183,8 +218,8 @@ body.dark-theme {
 
 .modal-content button {
     padding: 0.5rem;
-    background-color: var(--accent);
-    color: var(--lightColor);
+    background: var(--background);
+    color: var(--surface);
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 20px;
@@ -211,11 +246,16 @@ body.dark-theme {
     bottom: 3rem;
     right: 50%;
     transform: translate(50%, 50%);
-    background-color: var(--accent);
-    color: var(--textButton);
+    background-color: var(--surface-contrast);
+    color: var(--surface);
     padding: 0.5rem 2rem;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.35);
     z-index: 1000;
     opacity: 0;
+}
+
+.modal-content button:hover {
+    transform: translateY(-4px);
+    box-shadow: 2px 2px 10px var(--blueHeader) ;
 }
