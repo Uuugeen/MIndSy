@@ -3,7 +3,8 @@ import { innit } from './core.js';
 
 
 document.addEventListener('DOMContentLoaded', function() {
-
+    renderComments()
+    comments();
     innit(); 
 
     const TOGGLE_THEME = document.getElementById('theme-switch');
@@ -34,4 +35,43 @@ export function showMessage(message) {
     setTimeout(() => {
         modalMessage.style.opacity = '0';
     }, 2000);
+}
+
+function comments() {
+    const comentForm = document.getElementById("commentForm");
+
+    comentForm.addEventListener("submit", (e) =>{
+        e.preventDefault();
+        let commentName = document.getElementById("nameCommentInput").value;
+        let commentValue = document.getElementById("commentInput").value;
+
+        if (commentName && commentValue){
+            const comments = JSON.parse(localStorage.getItem("comments")) || [];
+            comments.unshift({ username: commentName, commentText: commentValue });
+            localStorage.setItem("comments", JSON.stringify(comments));
+            renderComments()
+            comentForm.reset();
+        } else {
+            showMessage("Complete all fields");
+        }
+
+        
+
+    });
+   
+}
+
+function renderComments() {
+    const showComments = document.getElementById("see-comments");
+    const comments = JSON.parse(localStorage.getItem('comments')) || [];
+    const lastThree = comments.slice(0, 3);
+
+    showComments.innerHTML= "";
+
+    lastThree.forEach(comment => {
+        const div = document.createElement('div');
+        div.innerHTML = `<strong>${comment.username}</strong>:<p> ${comment.commentText}</p>`;
+        showComments.appendChild(div);
+    });
+
 }

@@ -5,4 +5,5 @@ export function innit() {
     console.log('Core initialized');
     avtentificationButtons(); //автентифікація
     checkAuth(); //відображення користувача
+    
 }
