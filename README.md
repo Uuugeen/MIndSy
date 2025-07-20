@@ -78,8 +78,8 @@ Contributions, ideas, and pull requests are welcome!
 
 ---
 
-**Thank you for checking out MindSy 💙
-**Let’s build something mindful together!
+>Thank you for checking out MindSy 💙
+>Let’s build something mindful together!
 
 
 
