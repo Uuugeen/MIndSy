@@ -298,6 +298,7 @@
     padding: 0.3rem 0.5rem;
     width: 35rem;
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.313);
+    color: var(--surface-contrast);
 }
 
 .add-comment button {

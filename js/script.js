@@ -5,6 +5,7 @@ import { innit } from './core.js';
 document.addEventListener('DOMContentLoaded', function() {
     renderComments()
     comments();
+    animateFooter();
     innit(); 
 
     const TOGGLE_THEME = document.getElementById('theme-switch');
@@ -75,3 +76,22 @@ function renderComments() {
     });
 
 }
+
+function animateFooter() {
+    const target = document.getElementById("footer");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+                observer.unobserve(entry.target); 
+            }
+            else {
+                entry.target.classList.remove("animate");
+            }
+        });
+    });
+
+    if (target) observer.observe(target);
+}
+

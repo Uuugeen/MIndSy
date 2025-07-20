@@ -42,6 +42,8 @@ table {border-collapse: collapse;border-spacing: 0;}
     --backgroundBlue: linear-gradient(45deg, var(--blue) 0%, var(--blueSecondary) 60%);
     --backgroundViolet: linear-gradient(45deg, var(--violet) 0%, var(--violetSecondary) 30%, var(--violetThird) 60%);
 
+
+    --footerColor: #000000cc;
    
 
 
@@ -80,6 +82,8 @@ body.dark-theme {
 
     --startedFast: #00000037;
     --startedFast2:var(--blackColor);
+
+    --footerColor: #ffe4e4;
     
     --background: linear-gradient(90deg, var(--lightColor), var(--grayColor));
      --backgroundBlue:linear-gradient(90deg, var(--lightColor), var(--grayColor));
